@@ -43,5 +43,17 @@ namespace WebApplication1.Repositories
             context.Items.Remove(stockItem);
             context.SaveChanges();
         }
+
+        public IEnumerable<StockItem> SortRepositorieByName()
+        {
+            return context.Items.OrderBy(s => s.Name);
+            
+        }
+
+        public IEnumerable<StockItem> SortRepositorieByPrice()
+        {
+            return context.Items.OrderBy(s => s.Price);
+            
+        }
     }
 }
