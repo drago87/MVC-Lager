@@ -15,11 +15,21 @@ namespace WebApplication1.Controllers
     {
         private StockItemsRepositories repo = new StockItemsRepositories();
         private StoreContext db = new StoreContext();
+        private static string SearchSave;
+
+        public StockItemsController()
+        {
+            SearchSave = "";
+        }
 
         // GET: StockItems
-        public ActionResult Index()
+        public ActionResult Index(string Search = "" , string sort = "Name")
         {
-            return View(repo.GetAllItems());
+            if (Search != "" )
+            {
+                SearchSave = Search;
+            }
+            return View(repo.GetAllItems(SearchSave, sort));
         }
 
         public ActionResult Details(int id = -1)
@@ -95,16 +105,6 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult SortByName()
-        {
-            
-            return View(repo.SortRepositorieByName());
-        }
-
-        public ActionResult SortByPrice()
-        {
-
-            return View(repo.SortRepositorieByPrice());
-        }
+       
     }
 }

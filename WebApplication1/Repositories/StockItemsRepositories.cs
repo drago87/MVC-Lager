@@ -16,9 +16,19 @@ namespace WebApplication1.Repositories
             context = new StoreContext();
         }
 
-        public IEnumerable<StockItem> GetAllItems()
+        public IEnumerable<StockItem> GetAllItems(string Search, string sort)
         {
-            return context.Items;
+            var temp2 = from i in context.Items
+                        where i.Name.Contains(Search)
+                        select i;
+            var temp3 = temp2.AsEnumerable().OrderBy(o => o.GetType().GetProperty(sort).GetValue(o, null));
+            //var temp = context.Items.AsEnumerable().OrderBy(o => o.GetType().GetProperty(sort).GetValue(o, null));//.Any(item => item.Name == Search);
+            //var temp2 = 
+            //var temp = from i in context.Items
+            //           select i;
+            //var temp2 = from i in temp
+              //          select   
+            return temp3;
         }
 
         public StockItem GetItemByID(int id)

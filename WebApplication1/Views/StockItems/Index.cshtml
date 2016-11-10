@@ -12,11 +12,17 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Name", "SortByName", new { id = 1 })
+            @Html.ActionLink("Name", "Index", new { sort = "Name" })
             <!--@Html.DisplayNameFor(model => model.Name)-->
         </th>
         <th>
-            @Html.ActionLink("Price", "SortByPrice", new { id = 1 })
+            @Html.ActionLink("Price", "Index", new { sort = "Price" })
+        </th>
+        <th>
+            <form method="get">
+                @Html.TextBox("Search")
+            </form>
+            <!--Sort = Textbox.content-->
         </th>
         <th></th>
     </tr>
