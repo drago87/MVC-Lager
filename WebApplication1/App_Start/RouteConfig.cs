@@ -16,7 +16,7 @@ namespace WebApplication1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "EFStockItems", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "StockItems", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
